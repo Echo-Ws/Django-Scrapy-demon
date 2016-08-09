@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LectutreShow</title>
+    <link rel="stylesheet" type="text/css" href="/static/index.css" />
+
+    {% load range %}
+</head>
+<body>
+<table id="result_list">
+{% if lecture_list %}
+
+    <thead>
+<tr>
+<th>Title</th>
+<th>Speaker</th>
+<th><a href="/lecture/{{ messageT|default:"upT/" }}">Time</a></th>
+<th>Place</th>
+<th>University</th>
+<th><a href="/lecture/{{ messageU|default:"upU/" }}">Updata time</th>
+<th>Link</th>
+</tr>
+</thead>
+    {% for lecture in lecture_list %}
+    <tr class="row{{ forloop.counter }}">
+        <th class="field-title">{{ lecture.title }}</th>
+        <td class="field-speaker">{{ lecture.speaker }}</td>
+        <td class="field-time nowrap">{{ lecture.time|date:"Y-m-d H:i" }}.</td>
+        <td class="field-place">{{ lecture.place }}</td>
+        <td class="field-university">{{ lecture.university }}</td>
+        <td class="field-update_time nowrap">{{ lecture.update_time|date:"Y-m-d" }}</td>
+        <td class="field-link"><a href ={{ lecture.link }} >{{ lecture.link }}</a></td>
+    </tr>
+
+{#        <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>#}
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No data are available.</p>
+{% endif %}
+</table>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if lecture_list.has_previous %}
+            <a href="?page={{ lecture_list.previous_page_number }}">上一页</a>
+        {% endif %}
+
+        <span class="num">
+        {% for num in lecture_list.paginator.num_pages|get_range %}
+            {% if num != lecture_list.number %}
+                <a href="?page={{ num }}">{{ num }}</a>
+                {% else %}
+                {{ num }}
+            {% endif %}
+        {% endfor %}
+        </span>
+        {% if lecture_list.has_next %}
+            <a href="?page={{ lecture_list.next_page_number }}">下一页</a>
+        {% endif %}
+    </span>
+</div>
+
+</body>
+</html>
