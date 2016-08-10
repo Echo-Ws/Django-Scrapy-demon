@@ -3,15 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>LectutreShow</title>
-    <link rel="stylesheet" type="text/css" href="/static/index.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/index.css" />
+    <script src="/static/js/jquery.js" type="text/javascript"></script>
 
     {% load range %}
 </head>
 <body>
-<table id="result_list">
-{% if lecture_list %}
 
-    <thead>
+<div id="toolbar">
+    <form method="get" id="changelist-search">
+        <label for="searchbar"><img alt="Search" src="/static/admin/img/search.svg"></label>
+        <input type="text" id="searchbar" placeholder="输入需要查找的信息" value="" name="q" size="40">
+        <input type="submit" value="Search">
+
+    </form>
+</div>
+
+
+<table id="result_list">
+
+ <thead>
 <tr>
 <th>Title</th>
 <th>Speaker</th>
@@ -19,29 +30,26 @@
 <th>Place</th>
 <th>University</th>
 <th><a href="?o={{ message}}update_time">Updata time</th>
-<th>Link</th>
+
 </tr>
 </thead>
+{% if lecture_list %}
+
     {% for lecture in lecture_list %}
     <tr class="row{{ forloop.counter }}">
-        <th class="field-title">{{ lecture.title }}</th>
+        <th class="field-title"><a href ={{ lecture.link }} >{{ lecture.title }}</a></th>
         <td class="field-speaker">{{ lecture.speaker }}</td>
         <td class="field-time nowrap">{{ lecture.time|date:"Y-m-d H:i" }}.</td>
         <td class="field-place">{{ lecture.place }}</td>
         <td class="field-university">{{ lecture.university }}</td>
         <td class="field-update_time nowrap">{{ lecture.update_time|date:"Y-m-d" }}</td>
-        <td class="field-link"><a href ={{ lecture.link }} >{{ lecture.link }}</a></td>
+
     </tr>
 
-{#        <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>#}
     {% endfor %}
-    </ul>
-{% else %}
-    <p>No data are available.</p>
-{% endif %}
 </table>
 
-<div class="pagination">
+    <div class="pagination">
     <span class="step-links">
         {% if lecture_list.has_previous %}
             <a href="?page={{ lecture_list.previous_page_number }}">上一页</a>
@@ -61,6 +69,15 @@
         {% endif %}
     </span>
 </div>
+
+{% else %}
+    </table>
+    <p>No data are available.</p>
+
+{% endif %}
+
+
+
 
 </body>
 </html>

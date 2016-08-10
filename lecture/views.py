@@ -18,8 +18,16 @@ def index(request):
     else:
         a = ''
 
-    contact_list = Lecture.objects.order_by(o)
-    paginator = Paginator(contact_list, 5)  # Show 15 contacts per page
+    q = request.GET.get('q')
+    if q:
+        try:
+            contact_list = Lecture.objects.filter(title__icontains=q)
+        except Lecture.DoesNotExist:
+            return render(request, 'lecture/index.html', {'message': a, })
+    else:
+        contact_list = Lecture.objects.order_by(o)
+
+    paginator = Paginator(contact_list, 5)
     page = request.GET.get('page')
     try:
         contacts = paginator.page(page)
@@ -31,6 +39,11 @@ def index(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
         contacts = paginator.page(paginator.num_pages)
 
+    # x = render(request, 'lecture/index.html', {
+    #     'lecture_list': contacts,
+    #     'message': a,
+    # })
+    # print x.content
     return render(request, 'lecture/index.html', {
         'lecture_list': contacts,
         'message': a,
