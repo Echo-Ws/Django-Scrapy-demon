@@ -8,7 +8,10 @@ from .models import Lecture
 
 
 def index(request):
+    return render(request, 'lecture/index.html')
 
+
+def content(request):
     o = request.GET.get('o')
     if not o:
         o = 'time'
@@ -23,7 +26,7 @@ def index(request):
         try:
             contact_list = Lecture.objects.filter(title__icontains=q)
         except Lecture.DoesNotExist:
-            return render(request, 'lecture/index.html', {'message': a, })
+            return render(request, 'lecture/index.html', {'message': a,})
     else:
         contact_list = Lecture.objects.order_by(o)
 
@@ -39,14 +42,7 @@ def index(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
         contacts = paginator.page(paginator.num_pages)
 
-    # x = render(request, 'lecture/index.html', {
-    #     'lecture_list': contacts,
-    #     'message': a,
-    # })
-    # print x.content
-    return render(request, 'lecture/index.html', {
+    return render(request, 'lecture/content.html', {
         'lecture_list': contacts,
         'message': a,
     })
-
-
