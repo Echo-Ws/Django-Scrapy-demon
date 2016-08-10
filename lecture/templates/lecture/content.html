@@ -6,10 +6,10 @@
 <tr>
 <th>Title</th>
 <th>Speaker</th>
-<th><a href="?o={{ message }}time">Time</a></th>
+<th>Time</th>
 <th>Place</th>
 <th>University</th>
-<th><a href="?o={{ message}}update_time">Updata time</th>
+<th>Updata time</th>
 
 </tr>
 </thead>
@@ -31,20 +31,24 @@
     <div class="pagination">
     <span class="step-links">
         {% if lecture_list.has_previous %}
-            <a href="?page={{ lecture_list.previous_page_number }}">上一页</a>
+            <a href="javascript:void(0);" onclick="getContent({{ lecture_list.previous_page_number }})">上一页</a>
+        {% else %}
+            <span style="visibility:hidden;">下一页</span>
         {% endif %}
 
         <span class="num">
         {% for num in lecture_list.paginator.num_pages|get_range %}
             {% if num != lecture_list.number %}
-                <a href="?page={{ num }}">{{ num }}</a>
-                {% else %}
+                <a href="javascript:void(0);" onclick="getContent({{ num }})">{{ num }}</a>
+            {% else %}
                 {{ num }}
             {% endif %}
         {% endfor %}
         </span>
         {% if lecture_list.has_next %}
-            <a href="?page={{ lecture_list.next_page_number }}">下一页</a>
+            <a href="javascript:void(0);" onclick="getContent({{ lecture_list.next_page_number }})">下一页</a>
+        {% else %}
+            <span style="visibility:hidden;">下一页</span>
         {% endif %}
     </span>
 </div>

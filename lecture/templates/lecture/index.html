@@ -11,15 +11,13 @@
 <body>
 
 <script type="text/javascript">
-    function getContent(){
-
-            alert("1111");
+    function getContent(page){
             $.ajax({
                 url: 'content',
                 type: 'get', // This is the default though, you don't actually need to always mention it
                 data: {'q':$('#searchbar').val(),
-                        'o':
-
+                        'page': page,
+                        'o':  $(":selected").val(),
                 },
                 success: function(data) {
                     document.getElementById("result_list").innerHTML=data;
@@ -29,19 +27,23 @@
     };
 
 
-
-
-
-
-})
-
-
 </script>
 
 <div id="toolbar">
-        <label for="searchbar"><img alt="Search" src="/static/admin/img/search.svg"></label>
-        <input type="text" id="searchbar" placeholder="输入需要查找的信息" value="" name="q" size="40">
-        <button type="button" onclick="getContent()" >Search</button>
+    <label for="searchbar"><img alt="Search" src="/static/admin/img/search.svg"></label>
+    <input type="text" id="searchbar" placeholder="输入需要查找的信息" value="" name="q" size="40">
+    <button type="button" onclick="getContent(1)" >Search</button>
+    <div id="order">排序方式：
+
+<select >
+<option value="time">开始时间递增</option>
+<option value="-time">开始时间递减</option>
+<option value="update_time">更新时间递增</option>
+<option value="-update_time">更新时间递减</option>
+</select>
+
+
+</div>
 </div>
 
 

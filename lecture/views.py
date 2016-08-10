@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views import generic
+
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import Lecture
@@ -13,20 +13,13 @@ def index(request):
 
 def content(request):
     o = request.GET.get('o')
-    if not o:
-        o = 'time'
-
-    if o[0].isalpha():
-        a = '-'
-    else:
-        a = ''
 
     q = request.GET.get('q')
     if q:
         try:
             contact_list = Lecture.objects.filter(title__icontains=q)
         except Lecture.DoesNotExist:
-            return render(request, 'lecture/index.html', {'message': a,})
+            return render(request, 'lecture/index.html')
     else:
         contact_list = Lecture.objects.order_by(o)
 
@@ -44,5 +37,4 @@ def content(request):
 
     return render(request, 'lecture/content.html', {
         'lecture_list': contacts,
-        'message': a,
     })
