@@ -1,5 +1,5 @@
  {% load range %}
-<table>
+<table id="result">
 {% if lecture_list %}
 
  <thead>
@@ -31,7 +31,7 @@
     <div class="pagination">
     <span class="step-links">
         {% if lecture_list.has_previous %}
-            <a href="javascript:void(0);" onclick="getContent({{ lecture_list.previous_page_number }})">上一页</a>
+            <a href="#result" onclick="getContent({{ lecture_list.previous_page_number }})">上一页</a>
         {% else %}
             <span style="visibility:hidden;">下一页</span>
         {% endif %}
@@ -39,16 +39,16 @@
         <span class="num">
         {% for num in lecture_list.paginator.num_pages|get_range %}
             {% if num != lecture_list.number %}
-                <a href="javascript:void(0);" onclick="getContent({{ num }})">{{ num }}</a>
+                <a href="#result" onclick="getContent({{ num }})">{{ num }}</a>
             {% else %}
                 {{ num }}
             {% endif %}
         {% endfor %}
         </span>
         {% if lecture_list.has_next %}
-            <a href="javascript:void(0);" onclick="getContent({{ lecture_list.next_page_number }})">下一页</a>
+            <a href="#result" onclick="getContent({{ lecture_list.next_page_number }})">下一页</a>
         {% else %}
-            <span style="visibility:hidden;">下一页</span>
+            <span style="visibility:hidden;" >下一页</span>
         {% endif %}
     </span>
 </div>

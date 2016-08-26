@@ -23,7 +23,7 @@ def content(request):
     else:
         contact_list = Lecture.objects.order_by(o)
 
-    paginator = Paginator(contact_list, 5)
+    paginator = Paginator(contact_list, 30)
     page = request.GET.get('page')
     try:
         contacts = paginator.page(page)

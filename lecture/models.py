@@ -11,18 +11,21 @@ from django.db import models
 from django.forms import ModelForm
 from django.core.exceptions import NON_FIELD_ERRORS
 
+
 class Lecture(models.Model):
-    title = models.TextField(blank=True, null=True)
+
+    title = models.TextField(primary_key=True)
     speaker = models.TextField(blank=True, null=True)
-    time = models.DateTimeField(null=False)
+    time = models.DateTimeField(blank=True, null=True)
     place = models.TextField(blank=True, null=True)
-    university = models.TextField(blank=True, null=True)
-    update_time = models.DateField(null=False)
-    link = models.TextField(primary_key=True)
+    university = models.TextField()
+    update_time = models.DateTimeField(blank=True, null=True)
+    link = models.TextField()
 
     class Meta:
         managed = False
         db_table = 'lecture'
+        unique_together = ("title", "link")
 
     def __unicode__(self):
         return unicode(self.title)
