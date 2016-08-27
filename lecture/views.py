@@ -21,8 +21,9 @@ def content(request):
         except Lecture.DoesNotExist:
             return render(request, 'lecture/index.html')
     else:
-        contact_list = Lecture.objects.order_by(o)
+        contact_list = Lecture.objects
 
+    contact_list = contact_list.order_by(o)
     paginator = Paginator(contact_list, 30)
     page = request.GET.get('page')
     try:

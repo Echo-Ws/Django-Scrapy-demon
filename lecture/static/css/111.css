@@ -1,0 +1,126 @@
+/* CSS Document */
+
+<!-- CSS goes in the document HEAD or added to your external stylesheet -->
+table.altrowstable {
+    font-family: verdana,arial,sans-serif;
+    font-size:11px;
+    color:#333333;
+    border-width: 1px;
+    border-color: #a9c6c9;
+    border-collapse: collapse;
+}
+table.altrowstable th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+table.altrowstable td {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #a9c6c9;
+}
+.oddrowcolor{
+    background-color:#d4e3e5;
+}
+.evenrowcolor{
+    background-color:#c3dde0;
+}
+
+
+h1,h2,h3,h4,h5,h6 {
+	font-family: index;
+}
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-image:url(/static/image/14.jpg);
+	background-size:cover;
+
+}
+#apDiv1 {
+	position: absolute;
+	width: 100%;
+	z-index: 5;
+	background:url(/static/image/20.jpg);
+	background-size: cover;
+	color: #FFF;
+	text-align: center;
+	height: 69px;
+}
+#apDiv2 {
+	position: absolute;
+	width: 138px;
+	height: 101px;
+	z-index: 2;
+	left: 0px;
+	top: 0px;
+}
+#apDiv3 {
+	position: absolute;
+	width: 80%;
+	height: 702px;
+	z-index: 2;
+	left: 10%;
+	top: 150%;
+	background-color:;
+}
+#apDiv4 {
+	position: absolute;
+	width: 80%;
+	height: 5%;
+	z-index: 2;
+	left: 10%;
+	top: 1155px;
+	color: #F00;
+}
+#apDiv5 {
+	position: absolute;
+	width: 200px;
+	height: 25px;
+	z-index: 1;
+	left:75%;
+	top: 65px;
+	color:;
+	text-align: center;
+}
+#apDiv6 {
+	position: absolute;
+	width: 100%;
+	height: 120%;
+	z-index: 1;
+	top: 64px;
+	background-image:url(/static/image/12.jpg);
+	background-size: cover;
+	color: #D6D6D6;
+	text-align: center;
+}
+#apDiv7 {
+	position: absolute;
+	width: 100%;
+	z-index: 1;
+	top: 55%;
+	color: #D6D6D6;
+	text-align: center;
+}
+#apDiv8 {
+	position: absolute;
+	width: 31px;
+	height: 27px;
+	z-index: 1;
+	left: 2px;
+	top: 646px;
+	color: #D6D6D6;
+	text-align: center;
+}
+#div1 {
+	width:80%;
+	height: 27px;
+	z-index: 1;
+	left: 0px;
+	top: 100%;
+	color:#F60;
+}

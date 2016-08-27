@@ -1,5 +1,5 @@
  {% load range %}
-<table id="result">
+<table id="alternatecolor" class="altrowstable">
 {% if lecture_list %}
 
  <thead>
@@ -15,7 +15,7 @@
 </thead>
 
     {% for lecture in lecture_list %}
-    <tr class="row{{ forloop.counter }}">
+    <tr >
         <th class="field-title"><a href ={{ lecture.link }} >{{ lecture.title }}</a></th>
         <td class="field-speaker">{{ lecture.speaker }}</td>
         <td class="field-time nowrap">{{ lecture.time|date:"Y-m-d H:i" }}.</td>
@@ -31,7 +31,7 @@
     <div class="pagination">
     <span class="step-links">
         {% if lecture_list.has_previous %}
-            <a href="#result" onclick="getContent({{ lecture_list.previous_page_number }})">上一页</a>
+            <a href="#toolbar" onclick="getContent({{ lecture_list.previous_page_number }})">上一页</a>
         {% else %}
             <span style="visibility:hidden;">下一页</span>
         {% endif %}
@@ -39,14 +39,14 @@
         <span class="num">
         {% for num in lecture_list.paginator.num_pages|get_range %}
             {% if num != lecture_list.number %}
-                <a href="#result" onclick="getContent({{ num }})">{{ num }}</a>
+                <a href="#toolbar" onclick="getContent({{ num }})">{{ num }}</a>
             {% else %}
                 {{ num }}
             {% endif %}
         {% endfor %}
         </span>
         {% if lecture_list.has_next %}
-            <a href="#result" onclick="getContent({{ lecture_list.next_page_number }})">下一页</a>
+            <a href="#toolbar" onclick="getContent({{ lecture_list.next_page_number }})">下一页</a>
         {% else %}
             <span style="visibility:hidden;" >下一页</span>
         {% endif %}
