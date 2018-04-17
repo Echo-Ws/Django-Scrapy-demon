@@ -5,6 +5,10 @@ from Lecture.items import LectureItem
 import re
 from scrapy import Request
 import datetime
+import sys
+
+reload(sys)
+sys.setdefaultencoding("utf-8")
 
 
 class SKLOISSpider(scrapy.Spider):
@@ -186,9 +190,9 @@ class SKLOISSpider(scrapy.Spider):
                     print "aaaaaaaaa"
                     print item['time']
                     # xy = re.split(ur'(',x)
-                    item["time"] = x
+                    # item["time"] = x
                     flag1 = 1
-                    f.write("时间：" + x.encode('utf-8') + "\n")
+                    # f.write("时间：" + item["time"] + "\n")
 
 
                 elif re.findall(u'Time(.*)', x) and not re.findall(u'and(.*)', x) and not re.findall(u'the(.*)', x):
@@ -206,9 +210,11 @@ class SKLOISSpider(scrapy.Spider):
                         xy = re.split(ur'（', x)
                         item["time"] = datetime.datetime.strptime(xy[0], u'%Y.%m.%d')
 
-                    elif re.findall(ur'September', x) and re.findall(ur'7', x):
+                    elif re.findall(r'September', x) and re.findall(r'7', x):
                         item["time"] = datetime.datetime(2015, 9, 7)
-                    elif re.findall(ur'May', x) and re.findall(ur'26', x):
+                        print item["time"]
+                        print "!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+                    elif re.findall(r'May', x) and re.findall(r'26', x):
                         item["time"] = datetime.datetime(2015, 5, 26)
                     print "aaaaaaaaa"
                     print item['time']

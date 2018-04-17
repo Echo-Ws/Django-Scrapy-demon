@@ -28,7 +28,7 @@
     {% endfor %}
 </table>
 
-    <div class="pagination">
+    <div id="pagination">
     <span class="step-links">
         {% if lecture_list.has_previous %}
             <a href="#toolbar" onclick="getContent({{ lecture_list.previous_page_number }})">上一页</a>

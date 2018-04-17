@@ -1,6 +1,7 @@
 /* CSS Document */
 
 <!-- CSS goes in the document HEAD or added to your external stylesheet -->
+
 table.altrowstable {
     font-family: verdana,arial,sans-serif;
     font-size:11px;
@@ -40,6 +41,10 @@ body {
 	background-image:url(/static/image/14.jpg);
 	background-size:cover;
 
+}
+#pagination{
+	text-align: center;
+	font-size:large;
 }
 #apDiv1 {
 	position: absolute;
