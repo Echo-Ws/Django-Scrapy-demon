@@ -28,8 +28,9 @@
 # 爬虫
 爬虫位于./Lecture_crawler/Lecture/spiders/   
 编写了6个爬虫来爬取6个网站的学术讲座信息,文件对应关系：
+
 | 文件名       | 对应学校  |  网址  |
-| :--------  | :-----  | :---- |
+| ------  | -----  | ---- |
 |` ScutSoftware.py`         | 华工软件学院      |    http://www.scut.edu.cn/sse/    |
 | `scutCS.py `       | 华工计算机学院      |   http://www.scut.edu.cn/cs/    |
 |` jnuISAT.py  `     | 暨南大学信息学院      |    http://xxxy.jnu.edu.cn/   |
